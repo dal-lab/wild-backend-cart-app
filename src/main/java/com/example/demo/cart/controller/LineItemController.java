@@ -1,4 +1,4 @@
-package com.example.demo.cart.controllers;
+package com.example.demo.cart.controller;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.cart.controllers.dtos.CartDto;
+import com.example.demo.cart.dto.CartDto;
 
 @RestController
 @RequestMapping("/cart/line-items")
