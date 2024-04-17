@@ -1,4 +1,4 @@
-package com.example.demo.cart.controllers.dtos;
+package com.example.demo.cart.dto;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ public record CartDto(
         int totalPrice
 ) {
     public record LineItemDto(
-            String id,
+            Long id,
             String productId,
             String productName,
             int unitPrice,

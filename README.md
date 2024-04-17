@@ -26,6 +26,6 @@ curl -i localhost:8080
 curl -i localhost:8080/cart/line-items
 
 curl -i -X POST -H "Content-Type: application/json" \
-    -d '{"productId":"product-1","quantity:2}' \
+    -d '{"productId":"product-1","quantity":2}' \
     localhost:8080/cart/line-items
 ```

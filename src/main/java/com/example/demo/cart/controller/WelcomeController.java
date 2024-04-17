@@ -1,4 +1,4 @@
-package com.example.demo.cart.controllers;
+package com.example.demo.cart.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
