@@ -7,7 +7,7 @@ public record CartDto(
         int totalPrice
 ) {
     public record LineItemDto(
-            String id,
+            Long id,
             String productId,
             String productName,
             int unitPrice,
