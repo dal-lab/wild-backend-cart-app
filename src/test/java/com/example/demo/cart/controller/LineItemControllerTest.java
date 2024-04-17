@@ -1,15 +1,21 @@
 package com.example.demo.cart.controller;
 
+import com.example.demo.cart.model.LineItem;
+import com.example.demo.cart.service.LineItemService;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.List;
+
 import static org.hamcrest.Matchers.containsString;
+import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -20,9 +26,11 @@ class LineItemControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @MockBean
+    private LineItemService lineItemService;
+
     // TODO: 장바구니를 올바르게 처리하면 `@Disabled` 애너테이션을 지우고,
     //       이 테스트가 돌아가게 합니다.
-    @Disabled
     @Test
     @DisplayName("GET /cart/line-items - 장바구니가 비어있을 때")
     void testListWithNoLineItem() throws Exception {
@@ -39,6 +47,7 @@ class LineItemControllerTest {
     @DisplayName("GET /cart/line-items - 장바구니에 상품이 있을 때")
     void testListWithLineItems() throws Exception {
         // TODO: 장바구니에 상품을 담아 둡니다.
+        given(lineItemService.getAllLineItems()).willReturn(List.of(new LineItem("product-1", "Product 1", 1000, 2, 2000)));
 
         mockMvc.perform(get("/cart/line-items"))
                 .andExpect(status().isOk())
@@ -55,7 +64,7 @@ class LineItemControllerTest {
         String json = """
                 {
                     "productId": "product-1",
-                    "quantity: 2
+                    "quantity": 2
                 }
                 """;
 
