@@ -64,7 +64,10 @@ class LineItemControllerTest {
         String json = """
                 {
                     "productId": "product-1",
-                    "quantity": 2
+                    "productName": "Sticker",
+                    "unitPrice": 3000,
+                    "quantity": 2,
+                    "totalPrice": 6000
                 }
                 """;
 
