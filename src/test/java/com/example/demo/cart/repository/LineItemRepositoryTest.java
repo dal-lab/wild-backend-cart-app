@@ -23,10 +23,6 @@ class LineItemRepositoryTest {
     @Autowired
     private LineItemRepository lineItemRepository;
 
-    // CommandLineRunner 때문에 없으면 에러발생
-    @MockBean
-    private LineItemService lineItemService;
-
     @Test
     public void whenFindByProductId_thenReturnLineItem() {
         // given

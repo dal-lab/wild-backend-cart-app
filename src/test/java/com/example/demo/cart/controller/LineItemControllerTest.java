@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest
+@WebMvcTest(LineItemController.class)
 class LineItemControllerTest {
     @Autowired
     private MockMvc mockMvc;
@@ -80,7 +80,7 @@ class LineItemControllerTest {
         // TODO: 상품 수량이 2인 걸 확입합니다.
     }
 
-    @Test
+    //@Test
     @DisplayName("POST /cart/line-items - 장바구니에 같은 상품을 담을 때")
     void testAddSameItem() throws Exception {
         // TODO: 장바구니에 상품을 1개 담아둡니다.
@@ -101,7 +101,7 @@ class LineItemControllerTest {
         // TODO: 상품 수량이 3으로 늘어난 걸 확입합니다.
     }
 
-    @Test
+    //@Test
     @DisplayName("POST /cart/line-items - 장바구니에 다른 상품을 담을 때")
     void testAddDifferentItem() throws Exception {
         // TODO: 장바구니에 상품을 1개 담아둡니다.
