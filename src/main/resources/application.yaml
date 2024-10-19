@@ -1,3 +1,7 @@
 spring:
-  application:
-    name: cart
+    application:
+        name: cart
+
+mongodb:
+    url: mongodb://localhost:27017/cart
+    database: demo

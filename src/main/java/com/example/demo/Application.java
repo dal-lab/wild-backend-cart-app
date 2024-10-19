@@ -2,6 +2,8 @@ package com.example.demo;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoDatabase;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -13,11 +15,19 @@ public class Application {
     }
 
     @Bean
-    public MongoClient mongoClient() {
+    public MongoClient mongoClient(
+            @Value("${mongodb.url}") String mongoURL
+    ) {
+        return MongoClients.create(mongoURL);
+    }
 
-        String mongoURI = "mongodb://192.168.0.17:27017";
+    @Bean
+    public MongoDatabase mongoDatabaseName(
+            MongoClient mongoClient,
+            @Value("${mongodb.database}") String databaseName
+    ) {
 
-        return MongoClients.create(mongoURI);
+        return mongoClient.getDatabase(databaseName);
     }
 
 }
