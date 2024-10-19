@@ -15,6 +15,11 @@ public class LineItem {
         this.quantity = quantity;
     }
 
+    public LineItem(String productId, int quantity) {
+        this.productId = productId;
+        this.quantity = quantity;
+    }
+
     public String getId() {
         return id;
     }
@@ -25,6 +30,10 @@ public class LineItem {
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     /// Add the following methods to the LineItem class:
@@ -51,5 +60,6 @@ public class LineItem {
     public int getUnitPrice() {
         return unitPrice;
     }
+
 
 }

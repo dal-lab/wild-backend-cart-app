@@ -13,8 +13,10 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 class CartServiceTest {
     LineItemDAO lineItemDAO;
@@ -47,7 +49,7 @@ class CartServiceTest {
     @DisplayName("getCart returns a cart with total price 0 when there are no line items")
     void totalPriceIsZero() {
 
-        
+
         // print all properties of lineItemDAO
         clearCart();
 
@@ -69,6 +71,29 @@ class CartServiceTest {
 
         );
 
+    }
+
+    @Test
+    @DisplayName("addProduct increments the quantity of an existing product")
+    void addProduct() {
+        String productId = product1.getId();
+        int quantity = 2;
+        int oldQuantity = 1;
+        cartService.addProduct(productId, quantity);
+        verify(lineItemDAO).update(
+                argThat(lineItem -> lineItem.getProductId().equals(productId) && lineItem.getQuantity() == quantity + +oldQuantity)
+        );
+    }
+
+    @Test
+    @DisplayName("addProduct adds a new product to the cart")
+    void addNewProduct() {
+        String productId = "3";
+        int quantity = 3;
+        cartService.addProduct(productId, quantity);
+        verify(lineItemDAO).add(
+                argThat(lineItem -> lineItem.getProductId().equals(productId) && lineItem.getQuantity() == quantity)
+        );
     }
 
     @AfterEach
