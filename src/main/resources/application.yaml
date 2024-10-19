@@ -1,7 +1,9 @@
+server:
+    port: 8081
 spring:
     application:
         name: cart
 
 mongodb:
-    url: mongodb://localhost:27017/cart
+    url: mongodb://192.168.0.17:27017
     database: demo
