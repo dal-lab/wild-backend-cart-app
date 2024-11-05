@@ -2,8 +2,11 @@ package com.example.demo.controllers;
 
 import com.example.demo.application.CartService;
 import com.example.demo.controllers.dto.CartDto;
+import com.example.demo.infrastructure.LineItemDAO;
+import com.example.demo.infrastructure.ProductDAO;
 import com.example.demo.models.Cart;
 import com.example.demo.models.LineItem;
+import com.mongodb.client.MongoDatabase;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,9 +17,10 @@ public class CartController {
     private CartService cartService;
 
     public CartController(
-            CartService cartService
+            LineItemDAO lineItemDAO,
+            ProductDAO productDAO,
+            MongoDatabase mongoDatabase
     ) {
-        this.cartService = cartService;
     }
 
 
@@ -27,8 +31,6 @@ public class CartController {
                 cart.getLineItems().stream().map(this::mapToDto).toList(),
                 cart.getTotalPrice()
         );
-
-
     }
 
     private CartDto.LineItemDto mapToDto(LineItem lineItem) {
@@ -39,7 +41,6 @@ public class CartController {
                 lineItem.getUnitPrice(),
                 lineItem.getQuantity(),
                 lineItem.getTotalPrice()
-
         );
     }
 }
