@@ -16,6 +16,9 @@ repositories {
 }
 
 dependencies {
+    implementation("org.mongodb:mongodb-driver-core:5.2.0")
+    implementation("org.mongodb:mongodb-driver-sync:5.2.0")
+
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
