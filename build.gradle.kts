@@ -19,6 +19,10 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
+    //MongoDB
+    implementation("org.mongodb:mongodb-driver-core:5.2.0")
+    implementation("org.mongodb:mongodb-driver-sync:5.2.0")
+
     developmentOnly("org.springframework.boot:spring-boot-devtools")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
