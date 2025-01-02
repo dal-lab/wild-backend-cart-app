@@ -5,11 +5,9 @@ import java.util.List;
 
 public class Cart {
     private List<LineItem> lineItems;
-    private int totalPrice;
 
-    public Cart(List<LineItem> lineItems, int totalPrice) {
+    public Cart(List<LineItem> lineItems) {
         this.lineItems = lineItems;
-        this.totalPrice = totalPrice;
     }
 
     public List<LineItem> getLineItems() {
@@ -17,6 +15,8 @@ public class Cart {
     }
 
     public int getTotalPrice() {
-        return totalPrice;
+        return lineItems.stream()
+                .mapToInt(LineItem::getTotalPrice)
+                .sum();
     }
 }

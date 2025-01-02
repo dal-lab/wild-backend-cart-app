@@ -76,7 +76,7 @@ class CartServiceTest {
     }
 
     @Test
-    @DisplayName("장바구니가 있는 상풍 총 가격은 0이다.")
+    @DisplayName("장바구니에 여러 상품이 있을 때 총 가격 계산")
     void calculateTotalPriceWithMultipleLineItems() {
         // Given
         int quantity1 = 2;

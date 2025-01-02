@@ -33,10 +33,6 @@ public class LineItem {
         return quantity;
     }
 
-    public int getTotalPrice() {
-        return totalPrice;
-    }
-
     public String getProductName() {
         return productName;
     }
@@ -45,21 +41,18 @@ public class LineItem {
         return unitPrice;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    //business logic
+
+    public void addQuantity(int quantity) {
+        this.quantity += quantity;
     }
 
-    public void setTotalPrice(int totalPrice) {
-        this.totalPrice = totalPrice;
+    public int getTotalPrice() {
+        return unitPrice * quantity;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setProduct(Product product) {
+        this.productName = product.getName();
+        this.unitPrice = product.getPrice();
     }
-
-
-    public void setUnitPrice(int unitPrice) {
-        this.unitPrice = unitPrice;
-    }
-
 }

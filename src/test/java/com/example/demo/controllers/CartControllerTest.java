@@ -28,7 +28,7 @@ class CartControllerTest {
     @Test
     @DisplayName("GET /cart")
     void detail() throws Exception {
-        Cart cart = new Cart(List.of(), 0);
+        Cart cart = new Cart(List.of());
         given(cartService.getCart()).willReturn(cart);
 
         mockMvc.perform(get("/cart"))
